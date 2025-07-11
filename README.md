@@ -1,2 +1,2 @@
 # ShovelJam2025
-Repo for th
+Repo for the ShovelJam2025 with Jude, Fen, and Jack
