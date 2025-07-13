@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private PlayerState state = PlayerState.Bobber;
 
     [SerializeField] private float speed = 0.1f;
+    [SerializeField] private BackgroundManager backgroundManager;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +28,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey("down"))
         {
-            bobber.transform.position += Vector3.down * speed;
+            backgroundManager.MoveBackground(speed * 2);
         }
 
         if (Input.GetKey("up"))
         {
-            bobber.transform.position += Vector3.up * speed;
+            backgroundManager.MoveBackground(speed * -2);
         }
 
         if (Input.GetKey("right"))
