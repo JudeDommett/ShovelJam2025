@@ -10,7 +10,7 @@ public class Fish : MonoBehaviour
     private float percentCaught = 0;
 
     // Controls How Fish moves
-    private float speed = 0.01f;
+    [SerializeField] private float speed = 0.01f;
     private int moveDir = 0;
     private int framesToMove = 0;
     private int framesMoved = 0;
