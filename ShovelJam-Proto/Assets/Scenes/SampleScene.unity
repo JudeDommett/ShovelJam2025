@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000000daf1d52
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -837,8 +837,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1377677069
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -1182733910, guid: b1c2e9374658592428fb7b3f506e8f2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1032,8 +1032,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1377677069
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -1182733910, guid: b1c2e9374658592428fb7b3f506e8f2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1490,6 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.2
   slider: {fileID: 253081746}
+  cam: {fileID: 519420031}
 --- !u!61 &2126744616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1639,6 +1640,14 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 253081746}
+    - target: {fileID: 4760984597364264306, guid: cc8c66e2fc894c140b68345c7ebfe802, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760984597364264306, guid: cc8c66e2fc894c140b68345c7ebfe802, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1377677069
+      objectReference: {fileID: 0}
     - target: {fileID: 5037243528454982879, guid: cc8c66e2fc894c140b68345c7ebfe802, type: 3}
       propertyPath: backgroundManager
       value: 

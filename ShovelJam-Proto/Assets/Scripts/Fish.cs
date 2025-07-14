@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class Fish : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class Fish : MonoBehaviour
     private int framesMoved = 0;
 
     [SerializeField] private Slider slider;
-    private Transform Bobber;
+    [SerializeField] private Camera cam;
+    private Transform bobber;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +46,7 @@ public class Fish : MonoBehaviour
         }
         if(percentCaught >= 1)
         {
-            transform.SetParent(Bobber);
+            transform.SetParent(bobber);
             isCaught = true;
         }
     }
@@ -68,6 +70,8 @@ public class Fish : MonoBehaviour
             transform.position += Vector3.left * speed;
         }
 
+        slider.transform.position = cam.WorldToScreenPoint(transform.position) + new Vector3(0,100);    
+
         framesMoved++;
     }
 
@@ -81,7 +85,7 @@ public class Fish : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject == Bobber.gameObject)
+        if(collision.gameObject == bobber.gameObject)
         {
             beingCaught = false;
         }

@@ -39,7 +39,6 @@ public class BackgroundManager : MonoBehaviour
 		if (skyIndex < skyOrder.Length-2)
 		{
 			skyIndex++;
-			Debug.Log(skyIndex);
 		}
 		animator.runtimeAnimatorController = new AnimatorOverrideController(animators[(int)skyOrder[skyIndex+1]].runtimeAnimatorController);
 
@@ -50,7 +49,6 @@ public class BackgroundManager : MonoBehaviour
 		if(skyIndex > 1)
 		{
 			skyIndex--;
-			Debug.Log(skyIndex);
 		}
 		animator.runtimeAnimatorController = new AnimatorOverrideController(animators[(int)skyOrder[skyIndex-1]].runtimeAnimatorController);
 	}
