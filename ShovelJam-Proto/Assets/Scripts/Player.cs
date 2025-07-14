@@ -1,4 +1,3 @@
-using System;
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -56,7 +55,7 @@ public class Player : MonoBehaviour
     private void FallMovement()
     {
         // play is always moving down
-        backgroundManager.MoveBackground(speed * 1.5f);
+        backgroundManager.MoveBackground(speed * 2f);
 
         if (Input.GetKey("right"))
         {
@@ -69,10 +68,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    enum PlayerState {
-        Character,
-        Bobber,
-        Falling 
+    public void SetPlayerState(PlayerState newState)
+    {
+        state = newState;
     }
 
+    public void AttachFishToBobber(Transform fish)
+    {
+        fish.SetParent(bobber.transform);
+    }
+
+
+}
+
+public enum PlayerState {
+    Character,
+    Bobber,
+    Falling 
 }

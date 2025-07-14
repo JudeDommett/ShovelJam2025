@@ -1,8 +1,5 @@
-using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 public class Fish : MonoBehaviour
 {
@@ -16,14 +13,14 @@ public class Fish : MonoBehaviour
     private int framesToMove = 0;
     private int framesMoved = 0;
 
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private Slider slider;
     [SerializeField] private Camera cam;
-    private Transform bobber;
 
     // Start is called before the first frame update
     void Start()
     {
-        bobber = GameObject.Find("Bobber").transform;
+
     }
 
     // Update is called once per frame
@@ -36,12 +33,12 @@ public class Fish : MonoBehaviour
 
         if (beingCaught)
         {
-            percentCaught += 0.001f;
+            percentCaught += 0.002f;
             slider.value = percentCaught;
         }
         else
         {
-            percentCaught -= 0.002f;
+            percentCaught -= 0.004f;
             if (percentCaught < 0)
             {
                 percentCaught = 0;
@@ -53,7 +50,11 @@ public class Fish : MonoBehaviour
         }
         if(percentCaught >= 1)
         {
-            transform.SetParent(bobber);
+            // update gamestate
+            gameManager.UpdatePlayerState(PlayerState.Falling);
+            gameManager.CatchFish(this.transform);
+            // TODO: have the fish become "detached" from the BGManager to avoid it reusing the object 
+
             isCaught = true;
             slider.gameObject.SetActive(false);
 
