@@ -81,8 +81,11 @@ public class Player : MonoBehaviour
 
     public void LoseFish()
     {
-        caughtFish.gameObject.SetActive(false);
-        //TODO: sent fish back into the background object pool
+        if(state == PlayerState.Falling)
+        {
+            caughtFish.gameObject.SetActive(false);
+            //TODO: sent fish back into the background object pool
+        }
     }
 
 }
