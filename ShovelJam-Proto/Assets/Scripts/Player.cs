@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -22,19 +23,40 @@ public class Player : MonoBehaviour
         {
             BobberMovement();
         }
+        if (state == PlayerState.Falling)
+        {
+            FallMovement();
+        }
+
     }
 
     private void BobberMovement()
     {
         if (Input.GetKey("down"))
         {
-            backgroundManager.MoveBackground(speed * 2);
+            backgroundManager.MoveBackground(speed * 1.5f);
         }
-
+        
         if (Input.GetKey("up"))
         {
-            backgroundManager.MoveBackground(speed * -2);
+            backgroundManager.MoveBackground(speed * -1.5f);
         }
+
+        if (Input.GetKey("right"))
+        {
+            bobber.transform.position += Vector3.right * speed;
+        }
+
+        if (Input.GetKey("left"))
+        {
+            bobber.transform.position += Vector3.left * speed;
+        }
+    }
+
+    private void FallMovement()
+    {
+        // play is always moving down
+        backgroundManager.MoveBackground(speed * 1.5f);
 
         if (Input.GetKey("right"))
         {

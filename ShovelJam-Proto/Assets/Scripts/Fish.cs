@@ -56,17 +56,30 @@ public class Fish : MonoBehaviour
             transform.SetParent(bobber);
             isCaught = true;
             slider.gameObject.SetActive(false);
+
         }
     }
 
     private void DoMovement()
     {
         System.Random random = new System.Random();
+
+        //if completed previous movement generate new direction and move time
         if(framesMoved == framesToMove)
         {
             moveDir = random.Next(2);
-            framesToMove = random.Next(30, 90);
+            framesToMove = random.Next(45, 90);
             framesMoved = 0;
+        }
+
+        // override move dir if gone too far
+        if(transform.position.x > 100)
+        {
+            moveDir = 1;
+        }
+        if(transform.position.x < -100)
+        {
+            moveDir = 0;
         }
 
         if(moveDir%2 == 0)
@@ -78,8 +91,9 @@ public class Fish : MonoBehaviour
             transform.position += Vector3.left * speed;
         }
 
-        slider.transform.position = cam.WorldToScreenPoint(transform.position) + new Vector3(0,100);    
-
+        // update slider positon
+        slider.transform.position = cam.WorldToScreenPoint(transform.position) + new Vector3(0,100);
+        
         framesMoved++;
     }
 
