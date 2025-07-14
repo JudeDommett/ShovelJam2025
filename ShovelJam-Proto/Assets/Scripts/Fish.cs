@@ -23,7 +23,7 @@ public class Fish : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Bobber = GameObject.Find("Bobber").transform;
+        bobber = GameObject.Find("Bobber").transform;
     }
 
     // Update is called once per frame
@@ -42,12 +42,20 @@ public class Fish : MonoBehaviour
         else
         {
             percentCaught -= 0.002f;
+            if (percentCaught < 0)
+            {
+                percentCaught = 0;
+                slider.gameObject.SetActive(false);
+
+            }
+
             slider.value = percentCaught;
         }
         if(percentCaught >= 1)
         {
             transform.SetParent(bobber);
             isCaught = true;
+            slider.gameObject.SetActive(false);
         }
     }
 
@@ -77,15 +85,16 @@ public class Fish : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject == Bobber.gameObject)
+        if(collision.gameObject.tag == "Bobber")
         {
+            slider.gameObject.SetActive(true);
             beingCaught = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject == bobber.gameObject)
+        if(collision.gameObject.tag == "Bobber")
         {
             beingCaught = false;
         }
