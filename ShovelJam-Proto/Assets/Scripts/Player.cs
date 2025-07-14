@@ -1,9 +1,9 @@
-using System.Xml.Serialization;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private GameObject bobber;
+    private Transform caughtFish;
     private PlayerState state = PlayerState.Bobber;
 
     [SerializeField] private float speed = 0.1f;
@@ -75,9 +75,15 @@ public class Player : MonoBehaviour
 
     public void AttachFishToBobber(Transform fish)
     {
+        caughtFish = fish;
         fish.SetParent(bobber.transform);
     }
 
+    public void LoseFish()
+    {
+        caughtFish.gameObject.SetActive(false);
+        //TODO: sent fish back into the background object pool
+    }
 
 }
 

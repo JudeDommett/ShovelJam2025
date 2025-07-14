@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class Cloud : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bobber")
         {
-            Debug.Log("Eating fish");
+            gameManager.LoseFish();
         }
     }
 }
