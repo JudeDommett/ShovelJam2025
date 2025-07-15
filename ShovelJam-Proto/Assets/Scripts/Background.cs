@@ -1,14 +1,19 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Background : MonoBehaviour
+public class Background : Flyweight
 {
+    new BackgroundSettings settings => (BackgroundSettings)base.settings;
+
     private int pos;
     private Animator animator;
 
     // TODO: decouple background to it's manager
-    [SerializeField ] private BackgroundManager backgroundManager;
+    [SerializeField] public BackgroundManager backgroundManager;
+
+
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         animator = GetComponent<Animator>();
     }
@@ -19,12 +24,36 @@ public class Background : MonoBehaviour
         if(transform.position.y >= 270)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 540, transform.position.z);
-            backgroundManager.GetPreviousSky(animator);
+            SetBackground(backgroundManager.GetPreviousSky());
         }
         else if(transform.position.y <= -270)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 540, transform.position.z);
-            backgroundManager.GetNextSky(animator);
+            SetBackground(backgroundManager.GetNextSky());
         }
     }
+
+    
+    public void SetBackground(AnimatorOverrideController newBackground)
+    {
+        animator.runtimeAnimatorController = newBackground;
+    }
 }
+
+[CreateAssetMenu(menuName = "Flyweight/Background Settings")]
+public class BackgroundSettings : FlyweightSettings
+{
+    public override Flyweight Create()
+    {
+        var go = Instantiate(prefab);
+
+        go.SetActive(false);
+        go.name = prefab.name;
+
+        var flyweight = go.GetOrAddComponent<Background>();
+        flyweight.settings = this;
+
+        return flyweight;
+    }
+}
+
