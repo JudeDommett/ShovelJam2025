@@ -1937,9 +1937,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background_count: 3
-  animators:
-  - {fileID: 4701241073388353552, guid: f5dbfa92670cb3e499a7c2c1b5465026, type: 3}
-  - {fileID: 7596747686749338332, guid: cc8c66e2fc894c140b68345c7ebfe802, type: 3}
+  animatorOverrides:
+  - {fileID: 22100000, guid: 071e5934454efca4ea00fefffd820ee2, type: 2}
+  - {fileID: 22100000, guid: d1ff5f32684ab954b871996fcc717040, type: 2}
   backgroundSettings: {fileID: 11400000, guid: 8726d720c6986154a8b14e76c1477174, type: 2}
 --- !u!4 &2100360604
 Transform:

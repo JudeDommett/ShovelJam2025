@@ -7,7 +7,7 @@ public class BackgroundManager : MonoBehaviour
 	private Background[] backgrounds;
 
 	// TODO: use scriptable object to hold the sky animator and order information
-	[SerializeField] private Animator[] animators;
+	[SerializeField] private AnimatorOverrideController[] animatorOverrides;
 
 	private SkyType[] skyOrder = { SkyType.blueSky, SkyType.blueSky, SkyType.RainSky, SkyType.RainSky};
 	private int skyIndex = 1;
@@ -66,7 +66,7 @@ public class BackgroundManager : MonoBehaviour
 	//returns override controller for the sky at the given index
 	private AnimatorOverrideController GetSkyAnimatorOverride(int index)
 	{
-        return new AnimatorOverrideController(animators[(int)skyOrder[index]].runtimeAnimatorController);
+        return animatorOverrides[(int)skyOrder[index]];
     }
 }
 
