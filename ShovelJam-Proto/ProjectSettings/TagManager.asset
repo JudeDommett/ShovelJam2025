@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bobber
   - Character
+  - SeaBackground
   layers:
   - Default
   - TransparentFX

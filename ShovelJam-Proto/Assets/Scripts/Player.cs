@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -15,28 +16,39 @@ public class Player : MonoBehaviour
     void Start()
     {
         bobber = GameObject.Find("Bobber");
+        bobber.SetActive(false);
         character = GameObject.Find("Character");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(gameManager.gameState);
-        if(gameManager.gameState == GameState.Character)
+        switch (gameManager.gameState)
         {
-            CharacterMovement();
-        }
+            case GameState.Character:
+                bobber.SetActive(false);
+                CharacterMovement();
+                break;
 
-        if(gameManager.gameState == GameState.Bobber)
-        {
-            BobberMovement();
-        }
+            case GameState.Bobber:
+                bobber.GetComponent<BoxCollider2D>().enabled = true;
+                BobberMovement();
+                break;
 
-        if (gameManager.gameState == GameState.Falling)
-        {
-            FallMovement();
-        }
+            case GameState.Falling:
+                FallMovement();
+                bobber.GetComponent<BoxCollider2D>().enabled = false;
+                break;
 
+            case GameState.Rising:
+                if (!bobber.activeSelf)
+                {
+                    bobber.SetActive(true);
+                    bobber.GetComponent<BoxCollider2D>().enabled = false;
+                }
+                break;
+
+        }
     }
 
     private void CharacterMovement()
