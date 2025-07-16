@@ -52,6 +52,7 @@ public class Fish : MonoBehaviour
         {
             // update gamestate
             gameManager.UpdateGameState(GameState.Falling);
+
             gameManager.CatchFish(this.transform);
             // TODO: have the fish become "detached" from the BGManager to avoid it reusing the object 
 
