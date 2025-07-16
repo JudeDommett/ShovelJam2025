@@ -51,7 +51,7 @@ public class Fish : MonoBehaviour
         if(percentCaught >= 1)
         {
             // update gamestate
-            gameManager.UpdatePlayerState(PlayerState.Falling);
+            gameManager.UpdateGameState(GameState.Falling);
             gameManager.CatchFish(this.transform);
             // TODO: have the fish become "detached" from the BGManager to avoid it reusing the object 
 

@@ -3,10 +3,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private GameObject bobber;
+    private GameObject character;
     private Transform caughtFish;
-    private PlayerState state = PlayerState.Bobber;
 
     [SerializeField] private float speed = 0.1f;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private BackgroundManager backgroundManager;
 
     // Start is called before the first frame update
@@ -19,10 +20,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         if(state == PlayerState.Bobber)
+        if(gameManager.gameState == GameState.Bobber)
         {
             BobberMovement();
         }
-        if (state == PlayerState.Falling)
+        if (gameManager.gameState == GameState.Falling)
         {
             FallMovement();
         }
@@ -68,10 +70,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetPlayerState(PlayerState newState)
-    {
-        state = newState;
-    }
 
     public void AttachFishToBobber(Transform fish)
     {
@@ -81,17 +79,11 @@ public class Player : MonoBehaviour
 
     public void LoseFish()
     {
-        if(state == PlayerState.Falling)
+        if(gameManager.gameState == GameState.Falling)
         {
             caughtFish.gameObject.SetActive(false);
             //TODO: sent fish back into the background object pool
         }
     }
 
-}
-
-public enum PlayerState {
-    Character,
-    Bobber,
-    Falling 
 }

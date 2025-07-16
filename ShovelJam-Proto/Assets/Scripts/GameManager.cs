@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private BackgroundManager backgroundManager;
 
+    public GameState gameState = GameState.Character;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +20,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void UpdatePlayerState(PlayerState newState)
+    public void UpdateGameState(GameState newState)
     {
-        player.SetPlayerState(newState);
+        gameState = newState;
     }
 
     public void CatchFish(Transform fish)
@@ -32,4 +34,11 @@ public class GameManager : MonoBehaviour
     {
         player.LoseFish();
     }
+}
+
+public enum GameState
+{
+    Character,
+    Bobber,
+    Falling
 }

@@ -17,6 +17,17 @@ public class BackgroundManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		
+	}
+
+	void CreateBackgrounds()
+	{
 		backgrounds = new Background[background_count];
 		for (int i = 0; i < background_count; i++)
 		{
@@ -26,13 +37,6 @@ public class BackgroundManager : MonoBehaviour
 			backgrounds[i].transform.position = new Vector3(0, 180 * (i-1), 0);
 			backgrounds[i].SetBackground(GetSkyAnimatorOverride(i));
 		}
-		
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-		
 	}
 
 	public void MoveBackground(float distance)
