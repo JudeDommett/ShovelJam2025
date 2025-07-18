@@ -7,6 +7,7 @@ TagManager:
   - Bobber
   - Character
   - SeaBackground
+  - GameManager
   layers:
   - Default
   - TransparentFX

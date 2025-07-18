@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
 {
-	[SerializeField] private int background_count = 3;
+	private int background_count = 3;
 	private Background[] backgrounds;
 
 	[SerializeField] private float risingTime = 1;
@@ -13,10 +14,11 @@ public class BackgroundManager : MonoBehaviour
 	// TODO: use scriptable object to hold the sky animator and order information
 	[SerializeField] private AnimatorOverrideController[] animatorOverrides;
 
-	private SkyType[] skyOrder = { SkyType.blueSky, SkyType.blueSky, SkyType.RainSky, SkyType.RainSky};
+	private SkyType[] skyOrder = { SkyType.blueSky, SkyType.blueSky, SkyType.blueSky, SkyType.RainSky, SkyType.RainSky};
 	private int skyIndex = 1;
 
 	[SerializeField] private BackgroundSettings backgroundSettings;
+	[SerializeField] private List<FishSettings> fishSettings;
 	[SerializeField] private GameManager gameManager;
 	
 	// Start is called before the first frame update
@@ -102,27 +104,41 @@ public class BackgroundManager : MonoBehaviour
 	}
 
 
-	public AnimatorOverrideController GetNextSky()
+	public BackgroundInfo GetNextSky()
 	{
+		BackgroundInfo info = new BackgroundInfo();
+
 		if(gameManager.gameState == GameState.Rising)
 		{
-			return GetSkyAnimatorOverride(0);
+			info.backgroundAnim = GetSkyAnimatorOverride(0);
+			info.fishSettings = null;
+            return info;
 		}
 		if (skyIndex < skyOrder.Length-2)
 		{
 			skyIndex++;
 		}
-		return GetSkyAnimatorOverride(skyIndex + 1);
+		info.backgroundAnim = GetSkyAnimatorOverride(skyIndex + 1);
+		info.fishSettings = GetFishSettings(skyIndex + 1);
+		return info;
 
 	}
 
-	public AnimatorOverrideController GetPreviousSky()
+	public BackgroundInfo GetPreviousSky()
 	{
+		BackgroundInfo info = new BackgroundInfo();
 		if(skyIndex > 1)
 		{
 			skyIndex--;
 		}
-		return GetSkyAnimatorOverride(skyIndex - 1);
+        info.backgroundAnim = GetSkyAnimatorOverride(skyIndex - 1);
+
+        info.fishSettings = GetFishSettings(skyIndex - 1);
+		if(gameManager.gameState == GameState.Falling)
+		{
+			info.fishSettings = null;
+		}
+		return info;
 	}
 
 	//returns override controller for the sky at the given index
@@ -130,7 +146,26 @@ public class BackgroundManager : MonoBehaviour
 	{
 		return animatorOverrides[(int)skyOrder[index]];
 	}
+
+	private FishSettings GetFishSettings(int index)
+	{
+		foreach(FishSettings settings in fishSettings)
+		{
+			if(settings.skyType == skyOrder[index])
+			{
+				return settings;
+			}
+		}
+		return null;
+	}
 }
+
+public struct BackgroundInfo
+{
+	public AnimatorOverrideController backgroundAnim;
+	public FishSettings fishSettings;
+}
+
 
 public enum SkyType {
 	blueSky,

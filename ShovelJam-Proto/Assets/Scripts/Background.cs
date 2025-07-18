@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Background : Flyweight
@@ -7,6 +7,8 @@ public class Background : Flyweight
 
     private int pos;
     private Animator animator;
+    private BackgroundInfo backgroundInfo;
+    private Fish fish = null;
 
     // TODO: decouple background to it's manager
     [SerializeField] public BackgroundManager backgroundManager;
@@ -23,13 +25,19 @@ public class Background : Flyweight
     {
         if(transform.position.y >= 270)
         {
+            DespawnFish();
             transform.position = new Vector3(transform.position.x, transform.position.y - 540, transform.position.z);
-            SetBackground(backgroundManager.GetPreviousSky());
+            backgroundInfo = backgroundManager.GetPreviousSky();
+            SetBackground(backgroundInfo.backgroundAnim);
+            SpawnFish();
         }
         else if(transform.position.y <= -270)
         {
+            DespawnFish();
             transform.position = new Vector3(transform.position.x, transform.position.y + 540, transform.position.z);
-            SetBackground(backgroundManager.GetNextSky());
+            backgroundInfo = backgroundManager.GetNextSky();
+            SetBackground(backgroundInfo.backgroundAnim);
+            SpawnFish();
         }
     }
 
@@ -38,22 +46,30 @@ public class Background : Flyweight
     {
         animator.runtimeAnimatorController = newBackground;
     }
-}
 
-[CreateAssetMenu(menuName = "Flyweight/Background Settings")]
-public class BackgroundSettings : FlyweightSettings
-{
-    public override Flyweight Create()
+    public void SpawnFish()
     {
-        var go = Instantiate(prefab);
+        System.Random random = new System.Random();
+        int fishseed = random.Next(0, backgroundInfo.fishSettings.FishTypes.Count - 1);
+        if (backgroundInfo.fishSettings ==  null)
+        {
+            fish = null;
+        }
+        else
+        {
+            fish = (Fish)FlyweightFactory.Spawn(backgroundInfo.fishSettings);
+            fish.transform.SetParent(transform);
+            fish.transform.position = transform.position + new Vector3(0, 80);
+            fish.SetFishAnim(backgroundInfo.fishSettings.FishTypes[fishseed].fishAnim[fishseed]);
+        }
+    }
 
-        go.SetActive(false);
-        go.name = prefab.name;
-
-        var flyweight = go.GetOrAddComponent<Background>();
-        flyweight.settings = this;
-
-        return flyweight;
+    public void DespawnFish()
+    {
+        if (fish != null)
+        {
+            FlyweightFactory.ReturnToPool(fish);
+        }
     }
 }
 

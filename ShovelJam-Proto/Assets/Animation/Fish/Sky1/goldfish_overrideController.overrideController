@@ -6,6 +6,6 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: soapfish_OverrideController
-  m_Controller: {fileID: 9100000, guid: 5ca59ac446d498043962a70598e11f07, type: 2}
+  m_Name: goldfish_overrideController
+  m_Controller: {fileID: 9100000, guid: 3bfbdd11ca8f68541a1ba9ad95b8d9ee, type: 2}
   m_Clips: []

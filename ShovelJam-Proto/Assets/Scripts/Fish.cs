@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Fish : MonoBehaviour
+public class Fish : Flyweight
 {
+    new FishSettings settings => (FishSettings)base.settings;
+
     private bool beingCaught = false;
     private bool isCaught = false;
     private float percentCaught = 0;
@@ -13,14 +16,18 @@ public class Fish : MonoBehaviour
     private int framesToMove = 0;
     private int framesMoved = 0;
 
-    [SerializeField] private GameManager gameManager;
     [SerializeField] private Slider slider;
-    [SerializeField] private Camera cam;
+
+    private GameManager gameManager;
+    private Camera cam;
+    private Animator animator;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -87,16 +94,23 @@ public class Fish : MonoBehaviour
         if(moveDir%2 == 0)
         {
             transform.position += Vector3.right * speed;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
             transform.position += Vector3.left * speed;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 
         // update slider positon
-        slider.transform.position = cam.WorldToScreenPoint(transform.position) + new Vector3(0,100);
+        //slider.transform.position = cam.WorldToScreenPoint(transform.position) + new Vector3(0,100);
         
         framesMoved++;
+    }
+
+    public void SetFishAnim(AnimatorOverrideController newBackground)
+    {
+        animator.runtimeAnimatorController = newBackground;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -116,3 +130,22 @@ public class Fish : MonoBehaviour
         }
     }
 }
+
+[CreateAssetMenu(menuName = "FishAndAnim")]
+public class FishAndAnim : ScriptableObject
+{
+    public List<FishType> fishType;
+    public List<AnimatorOverrideController> fishAnim;
+}
+
+public enum FishType {
+    Gold,
+    Sardine,
+    Soap,
+    Cat,
+    Clown,
+    Peeper,
+    BoxJellyFish,
+    Glorp
+}
+ 
