@@ -21,6 +21,7 @@ public class Fish : Flyweight
     private GameManager gameManager;
     private Camera cam;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -28,6 +29,7 @@ public class Fish : Flyweight
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -94,12 +96,18 @@ public class Fish : Flyweight
         if(moveDir%2 == 0)
         {
             transform.position += Vector3.right * speed;
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            // rotate sprite to match direction of movement
+            spriteRenderer.flipX = false;
+
         }
         else
         {
             transform.position += Vector3.left * speed;
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+
+            // rotate sprite to match direction of movement
+            spriteRenderer.flipX = true;
+
         }
 
         // update slider positon

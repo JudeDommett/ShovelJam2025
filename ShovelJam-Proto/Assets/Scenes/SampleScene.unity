@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4c33ddcf312254eb450547ecb14164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobberSpeed: 2
+  bobberSpeed: 3
   characterSpeed: 0.5
   gameManager: {fileID: 1598057302}
   backgroundManager: {fileID: 2100360603}
@@ -1568,7 +1568,7 @@ Transform:
   m_GameObject: {fileID: 1959547597}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -60, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

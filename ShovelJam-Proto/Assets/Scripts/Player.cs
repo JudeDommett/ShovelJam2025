@@ -36,11 +36,15 @@ public class Player : MonoBehaviour
                 break;
 
             case GameState.Falling:
+                MoveBobberToPosition(new Vector3(0, 60,  0));
+
                 FallMovement();
                 bobber.GetComponent<BoxCollider2D>().enabled = false;
                 break;
 
             case GameState.Rising:
+
+                MoveBobberToPosition(new Vector3(0, -50,  0));
                 if (!bobber.activeSelf)
                 {
                     bobber.SetActive(true);
@@ -113,6 +117,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    void MoveBobberToPosition(Vector3 position)
+    {
+        if(bobber.transform.position.y != position.y)
+        {
+            bobber.transform.position += Vector3.up * (position.y - bobber.transform.position.y) * Time.deltaTime * 2;
+        }
+    }
 
     public void AttachFishToBobber(Transform fish)
     {
