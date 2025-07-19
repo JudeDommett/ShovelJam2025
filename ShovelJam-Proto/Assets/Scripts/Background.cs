@@ -9,6 +9,7 @@ public class Background : Flyweight
     private Animator animator;
     private BackgroundInfo backgroundInfo;
     private Fish fish = null;
+    private Cloud cloud = null;
 
     // TODO: decouple background to it's manager
     [SerializeField] public BackgroundManager backgroundManager;
@@ -26,14 +27,20 @@ public class Background : Flyweight
         if(transform.position.y >= 270)
         {
             DespawnFish();
+            DespawnCloud();
+
             transform.position = new Vector3(transform.position.x, transform.position.y - 540, transform.position.z);
             backgroundInfo = backgroundManager.GetPreviousSky();
             SetBackground(backgroundInfo.backgroundAnim);
+
             SpawnFish();
+            SpawnCloud();
         }
         else if(transform.position.y <= -270)
         {
             DespawnFish();
+            DespawnCloud();
+
             transform.position = new Vector3(transform.position.x, transform.position.y + 540, transform.position.z);
             backgroundInfo = backgroundManager.GetNextSky();
             SetBackground(backgroundInfo.backgroundAnim);
@@ -50,13 +57,15 @@ public class Background : Flyweight
     public void SpawnFish()
     {
         System.Random random = new System.Random();
-        int fishseed = random.Next(0, backgroundInfo.fishSettings.FishTypes.Count - 1);
+
         if (backgroundInfo.fishSettings ==  null)
         {
             fish = null;
         }
         else
         {
+            int fishseed = random.Next(0, backgroundInfo.fishSettings.FishTypes.Count - 1);
+            
             fish = (Fish)FlyweightFactory.Spawn(backgroundInfo.fishSettings);
             fish.transform.SetParent(transform);
             fish.transform.position = transform.position + new Vector3(0, 80);
@@ -69,6 +78,32 @@ public class Background : Flyweight
         if (fish != null)
         {
             FlyweightFactory.ReturnToPool(fish);
+            fish = null;
+        }
+    }
+
+    public void SpawnCloud()
+    {
+        System.Random random = new System.Random();
+        int cloudPos = random.Next(-1, 1);
+
+        if (backgroundInfo.cloudSettings != null)
+        {
+            cloud = (Cloud)FlyweightFactory.Spawn(backgroundInfo.cloudSettings);
+            cloud.transform.SetParent(transform);
+            cloud.transform.position = transform.position + new Vector3(90*cloudPos, -40);
+            return;
+        }
+
+        cloud = null;
+    }
+
+    public void DespawnCloud()
+    {
+        if(cloud != null)
+        {
+            FlyweightFactory.ReturnToPool(cloud);
+            cloud = null;
         }
     }
 }

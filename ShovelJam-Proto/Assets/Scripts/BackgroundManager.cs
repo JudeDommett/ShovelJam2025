@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class BackgroundManager : MonoBehaviour
 
 	[SerializeField] private float risingTime = 1;
 	[SerializeField] private float rising_NumberOfScreens = 2;
+	[SerializeField] private float fallingMoveStep = 1;
+
 	private float risingMoveStep;
 	private Transform seaBackground;
 
@@ -19,6 +22,7 @@ public class BackgroundManager : MonoBehaviour
 
 	[SerializeField] private BackgroundSettings backgroundSettings;
 	[SerializeField] private List<FishSettings> fishSettings;
+	[SerializeField] private CloudSettings cloudSettings;
 	[SerializeField] private GameManager gameManager;
 	
 	// Start is called before the first frame update
@@ -63,6 +67,8 @@ public class BackgroundManager : MonoBehaviour
 	{
 		foreach(Background background in backgrounds)
 		{
+			background.DespawnCloud();
+			background.DespawnFish();
 			FlyweightFactory.ReturnToPool(background);
 		}
 		backgrounds = null;
@@ -75,15 +81,16 @@ public class BackgroundManager : MonoBehaviour
 		if(seaBackground.position.y <= (-180 * rising_NumberOfScreens))
 		{
 			gameManager.UpdateGameState(GameState.Bobber);
+			seaBackground.position = new Vector3(0, -180 * rising_NumberOfScreens, 0);
 		}
 	}
 	
 	private void FallingMovement()
 	{
-		MoveBackground(risingMoveStep);
+		MoveBackground(fallingMoveStep);
 		if(skyIndex == 1)
 		{
-            seaBackground.position += Vector3.up * risingMoveStep;
+            seaBackground.position += Vector3.up * fallingMoveStep;
 			if(seaBackground.position.y >= 0)
 			{
 				seaBackground.position = Vector3.zero;
@@ -107,6 +114,7 @@ public class BackgroundManager : MonoBehaviour
 	public BackgroundInfo GetNextSky()
 	{
 		BackgroundInfo info = new BackgroundInfo();
+		info.cloudSettings = null;
 
 		if(gameManager.gameState == GameState.Rising)
 		{
@@ -127,6 +135,9 @@ public class BackgroundManager : MonoBehaviour
 	public BackgroundInfo GetPreviousSky()
 	{
 		BackgroundInfo info = new BackgroundInfo();
+		
+		info.cloudSettings = null;
+		
 		if(skyIndex > 1)
 		{
 			skyIndex--;
@@ -137,6 +148,10 @@ public class BackgroundManager : MonoBehaviour
 		if(gameManager.gameState == GameState.Falling)
 		{
 			info.fishSettings = null;
+			if(seaBackground.position.y < -360)
+			{
+				info.cloudSettings = cloudSettings;
+			}
 		}
 		return info;
 	}
@@ -164,6 +179,7 @@ public struct BackgroundInfo
 {
 	public AnimatorOverrideController backgroundAnim;
 	public FishSettings fishSettings;
+	public CloudSettings cloudSettings;
 }
 
 

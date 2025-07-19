@@ -7,5 +7,5 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: catfish_overrideController
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31224e2dfa6d07a488fb05495d5f5e44, type: 2}
   m_Clips: []

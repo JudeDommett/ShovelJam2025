@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4c33ddcf312254eb450547ecb14164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobberSpeed: 1
+  bobberSpeed: 2
   characterSpeed: 0.5
   gameManager: {fileID: 1598057302}
   backgroundManager: {fileID: 2100360603}
@@ -1227,7 +1227,7 @@ Transform:
   m_GameObject: {fileID: 1463804030}
   serializedVersion: 2
   m_LocalRotation: {x: 0.015794551, y: 0, z: 0, w: 0.9998753}
-  m_LocalPosition: {x: 225.64551, y: -7.83016, z: 0}
+  m_LocalPosition: {x: 309, y: -19, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1415,6 +1415,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1740283315
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 474
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255115786150660168, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416888323337009016, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90a2b7559b40db146bc12342aa897393, type: 3}
 --- !u!1 &1953578436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,6 +1807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   risingTime: 1
   rising_NumberOfScreens: 5
+  fallingMoveStep: 4
   animatorOverrides:
   - {fileID: 22100000, guid: 071e5934454efca4ea00fefffd820ee2, type: 2}
   - {fileID: 22100000, guid: d1ff5f32684ab954b871996fcc717040, type: 2}
@@ -1757,6 +1815,7 @@ MonoBehaviour:
   fishSettings:
   - {fileID: 11400000, guid: 406239066dd80d84080b2aa2bf76ec59, type: 2}
   - {fileID: 11400000, guid: c9a21ff9cec77ca4283a7313eed797f2, type: 2}
+  cloudSettings: {fileID: 11400000, guid: 3fc092e6d3a14d64cb2d0aea98b7fc4b, type: 2}
   gameManager: {fileID: 1598057302}
 --- !u!4 &2100360604
 Transform:
@@ -1788,3 +1847,4 @@ SceneRoots:
   - {fileID: 1485757450}
   - {fileID: 1463804033}
   - {fileID: 1423280120}
+  - {fileID: 1740283315}
