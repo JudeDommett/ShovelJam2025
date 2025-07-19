@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     private GameObject bobber;
     private GameObject character;
-    private Transform caughtFish;
+    private Fish caughtFish;
 
     [SerializeField] private float bobberSpeed = 1f;
     [SerializeField] private float characterSpeed = 0.5f;
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
         {
             case GameState.Character:
                 bobber.SetActive(false);
+                DespawnFish();
                 CharacterMovement();
                 break;
 
@@ -127,7 +128,8 @@ public class Player : MonoBehaviour
 
     public void AttachFishToBobber(Transform fish)
     {
-        caughtFish = fish;
+        caughtFish = fish.GetComponent<Fish>();
+        fish.GetComponentInParent<Background>().fish = null;
         fish.SetParent(bobber.transform);
     }
 
@@ -135,8 +137,16 @@ public class Player : MonoBehaviour
     {
         if(gameManager.gameState == GameState.Falling)
         {
-            caughtFish.gameObject.SetActive(false);
-            //TODO: sent fish back into the background object pool
+            DespawnFish();
+        }
+    }
+
+    void DespawnFish()
+    {
+        if(caughtFish != null)
+        {
+            FlyweightFactory.ReturnToPool(caughtFish);
+            caughtFish = null;
         }
     }
 

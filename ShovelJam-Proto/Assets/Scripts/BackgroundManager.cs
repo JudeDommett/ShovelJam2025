@@ -17,7 +17,7 @@ public class BackgroundManager : MonoBehaviour
 	// TODO: use scriptable object to hold the sky animator and order information
 	[SerializeField] private AnimatorOverrideController[] animatorOverrides;
 
-	private SkyType[] skyOrder = { SkyType.blueSky, SkyType.blueSky, SkyType.blueSky, SkyType.RainSky, SkyType.RainSky};
+	private SkyType[] skyOrder = { SkyType.blueSky, SkyType.blueSky, SkyType.blueSky, SkyType.blueSky, SkyType.blueSky,  SkyType.RainSky, SkyType.RainSky};
 	private int skyIndex = 1;
 
 	[SerializeField] private BackgroundSettings backgroundSettings;

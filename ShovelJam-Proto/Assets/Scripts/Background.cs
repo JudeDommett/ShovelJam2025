@@ -6,9 +6,10 @@ public class Background : Flyweight
     new BackgroundSettings settings => (BackgroundSettings)base.settings;
 
     private int pos;
+    
+    public Fish fish = null;
     private Animator animator;
     private BackgroundInfo backgroundInfo;
-    private Fish fish = null;
     private Cloud cloud = null;
 
     // TODO: decouple background to it's manager
