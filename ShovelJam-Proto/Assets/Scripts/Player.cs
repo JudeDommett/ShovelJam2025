@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
             case GameState.Rising:
 
-                MoveBobberToPosition(new Vector3(0, -50,  0));
+                MoveBobberToPosition(new Vector3(0, -30,  0));
                 if (!bobber.activeSelf)
                 {
                     bobber.SetActive(true);
