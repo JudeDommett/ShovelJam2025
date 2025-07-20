@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 1816c46be845a5b4c9c666de16a5d54a, type: 3}
   m_Name: BlueSkyFish
-  m_EditorClassIdentifier: Assembly-CSharp::FishSettings
+  m_EditorClassIdentifier: 
   type: 1
   prefab: {fileID: 1827054458848843585, guid: 2267d185f35531a4f83e1c4c46b21002, type: 3}
   skyType: 0
   FishTypes:
-  - {fileID: 11400000, guid: 1faa81b57df84c842bc5c81acc5de6de, type: 2}
+  - {fileID: 11400000, guid: f2600bda8ea76fb47b4fdecd7957e22c, type: 2}

@@ -16,4 +16,4 @@ MonoBehaviour:
   prefab: {fileID: 1827054458848843585, guid: 2267d185f35531a4f83e1c4c46b21002, type: 3}
   skyType: 3
   FishTypes:
-  - {fileID: 11400000, guid: b4ab72ccd018c2c4bb523395ce171b79, type: 2}
+  - {fileID: 11400000, guid: e422ae42a0b279b4788534a77d6e1bec, type: 2}

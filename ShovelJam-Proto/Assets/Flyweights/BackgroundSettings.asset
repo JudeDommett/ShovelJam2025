@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a8e50fc022a4a7440ab35a7df3042bde, type: 3}
   m_Name: BackgroundSettings
-  m_EditorClassIdentifier: Assembly-CSharp::BackgroundSettings
+  m_EditorClassIdentifier: 
   type: 0
   prefab: {fileID: 7176690205480641097, guid: f5dbfa92670cb3e499a7c2c1b5465026, type: 3}

@@ -164,6 +164,7 @@ public class Player : MonoBehaviour
     {
         if(caughtFish != null)
         {
+            caughtFish.isCaught = false;
             FlyweightFactory.ReturnToPool(caughtFish);
             caughtFish = null;
         }

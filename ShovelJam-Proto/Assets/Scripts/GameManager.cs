@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
         menu = GameObject.FindGameObjectWithTag("Menu");
 
         gameState = GameState.Character;
+
+        QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
     }
 

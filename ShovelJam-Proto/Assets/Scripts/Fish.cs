@@ -6,7 +6,7 @@ public class Fish : Flyweight
     new FishSettings settings => (FishSettings)base.settings;
 
     private bool beingCaught = false;
-    private bool isCaught = false;
+    public bool isCaught = false;
     private float percentCaught = 0;
 
     // Controls How Fish moves
