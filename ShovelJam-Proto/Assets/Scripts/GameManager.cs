@@ -1,4 +1,5 @@
 using Unity.Profiling;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         menu = GameObject.FindGameObjectWithTag("Menu");
 
-        gameState = GameState.Character;
+        gameState = GameState.Menu;
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
@@ -33,8 +34,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             menu.SetActive(true);
+            gameState = GameState.Menu;
         }
-        if (Input.GetKeyDown(KeyCode.E) && canCast)
+        if (Input.GetKeyDown(KeyCode.E) && canCast && gameState == GameState.Character)
         {
             UpdateGameState(GameState.Rising);
         }
@@ -59,6 +61,11 @@ public class GameManager : MonoBehaviour
         player.LoseFish();
     }
 
+    public void StartGame()
+    {
+        gameState = GameState.Character;
+    }
+
     public void ExitGame()
     {
         #if UNITY_EDITOR
@@ -71,6 +78,7 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
+    Menu,
     Character,
     Bobber,
     Falling,
