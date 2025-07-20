@@ -8,6 +8,7 @@ TagManager:
   - Character
   - SeaBackground
   - GameManager
+  - Menu
   layers:
   - Default
   - TransparentFX

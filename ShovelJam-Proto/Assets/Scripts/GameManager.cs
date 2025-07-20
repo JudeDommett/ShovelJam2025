@@ -9,12 +9,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Camera cam;
 
+    private GameObject menu;
+
     public GameState gameState = GameState.Character;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        menu = GameObject.FindGameObjectWithTag("Menu");
 
         gameState = GameState.Character;
         Application.targetFrameRate = 60;
@@ -23,6 +26,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            menu.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             UpdateGameState(GameState.Rising);
@@ -46,6 +53,15 @@ public class GameManager : MonoBehaviour
     public void LoseFish()
     {
         player.LoseFish();
+    }
+
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+
+        Application.Quit();
     }
 }
 
