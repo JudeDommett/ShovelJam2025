@@ -79,6 +79,7 @@ public class Background : Flyweight
         if (fish != null)
         {
             FlyweightFactory.ReturnToPool(fish);
+            fish.transform.rotation = Quaternion.Euler(0,0,0);
             fish = null;
         }
     }

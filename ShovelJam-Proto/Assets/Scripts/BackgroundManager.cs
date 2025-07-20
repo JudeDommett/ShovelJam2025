@@ -103,7 +103,12 @@ public class BackgroundManager : MonoBehaviour
 
 	public void MoveBackground(float distance)
 	{
-		foreach (var background in backgrounds)
+		if(backgrounds == null)
+		{
+			CreateBackgrounds();
+		}
+		Debug.Log(backgrounds);
+		foreach (Background background in backgrounds)
 		{
 			background.gameObject.transform.position += Vector3.up * distance;
 		}

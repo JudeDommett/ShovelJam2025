@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -137,13 +136,6 @@ public class Fish : Flyweight
             beingCaught = false;
         }
     }
-}
-
-[CreateAssetMenu(menuName = "FishAndAnim")]
-public class FishAndAnim : ScriptableObject
-{
-    public List<FishType> fishType;
-    public List<AnimatorOverrideController> fishAnim;
 }
 
 public enum FishType {
