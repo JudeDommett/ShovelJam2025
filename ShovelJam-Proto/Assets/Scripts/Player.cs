@@ -166,7 +166,7 @@ public class Player : MonoBehaviour
         {
             caughtFish.isCaught = false;
             FlyweightFactory.ReturnToPool(caughtFish);
-            fish.transform.rotation = Quaternion.Euler(0, 0, 0);
+            caughtFish.transform.rotation = Quaternion.Euler(0, 0, 0);
             caughtFish = null;
         }
     }
