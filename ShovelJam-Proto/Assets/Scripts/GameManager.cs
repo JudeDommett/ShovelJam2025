@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool canCast = false;
+ 
     [SerializeField] private Player player;
     [SerializeField] private BackgroundManager backgroundManager;
 
@@ -32,11 +34,11 @@ public class GameManager : MonoBehaviour
         {
             menu.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && canCast)
         {
             UpdateGameState(GameState.Rising);
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && gameState == GameState.Bobber)
         {
             UpdateGameState(GameState.Falling);
         }
