@@ -107,7 +107,6 @@ public class BackgroundManager : MonoBehaviour
 		{
 			CreateBackgrounds();
 		}
-		Debug.Log(backgrounds);
 		foreach (Background background in backgrounds)
 		{
 			background.gameObject.transform.position += Vector3.up * distance;

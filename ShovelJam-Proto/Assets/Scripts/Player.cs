@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         {
             case GameState.Character:
                 bobber.SetActive(false);
+                bobber.GetComponent<BoxCollider2D>().enabled = false;
                 DespawnFish();
                 CharacterMovement();
                 break;
@@ -44,7 +45,6 @@ public class Player : MonoBehaviour
                 MoveBobberToPosition(new Vector3(0, 60,  0));
 
                 FallMovement();
-                bobber.GetComponent<BoxCollider2D>().enabled = false;
                 break;
 
             case GameState.Rising:
@@ -166,6 +166,7 @@ public class Player : MonoBehaviour
         {
             caughtFish.isCaught = false;
             FlyweightFactory.ReturnToPool(caughtFish);
+            fish.transform.rotation = Quaternion.Euler(0, 0, 0);
             caughtFish = null;
         }
     }

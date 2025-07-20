@@ -34,10 +34,11 @@ public class Fish : Flyweight
     // Update is called once per frame
     void Update()
     {
-        if (!isCaught)
+        if (isCaught)
         {
-            DoMovement();
+            return;
         }
+        DoMovement();
 
         if (beingCaught)
         {
