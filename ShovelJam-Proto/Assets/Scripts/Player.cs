@@ -63,39 +63,44 @@ public class Player : MonoBehaviour
     private void CharacterMovement()
     {
         isMoving = false;
+        animator.SetBool("IsIdle", false);
+
+        string anim = null;
 
         if (Input.GetKey("down"))
         {
             character.transform.position += Vector3.down * characterSpeed;
-            animator.Play("Character_Front");
+            anim = "Character_Front";
             isMoving = true;
         }
 
         if (Input.GetKey("up"))
         {
             character.transform.position += Vector3.up * characterSpeed;
-            animator.Play("Character_Right");
+            anim = "Character_Back";
             isMoving = true;
         }
 
         if (Input.GetKey("right"))
         {
             character.transform.position += Vector3.right * characterSpeed;
-            animator.Play("Character_Right");
+            anim = "Character_Right";
             isMoving = true;
         }
 
         if (Input.GetKey("left"))
         {
             character.transform.position += Vector3.left * characterSpeed;
-            animator.Play("Character_Left");
+            anim = "Character_Left";
             isMoving = true;
         }
 
         if(!isMoving)
         {
-            animator.Play("Character_Front_Idle");
+            animator.SetBool("IsIdle", true);
         }
+
+        animator.Play(anim);
     }
 
     private void BobberMovement()

@@ -2408,7 +2408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   risingTime: 1
   rising_NumberOfScreens: 5
-  fallingMoveStep: 4
+  fallingMoveStep: 3
   animatorOverrides:
   - {fileID: 22100000, guid: 071e5934454efca4ea00fefffd820ee2, type: 2}
   - {fileID: 22100000, guid: d1ff5f32684ab954b871996fcc717040, type: 2}
