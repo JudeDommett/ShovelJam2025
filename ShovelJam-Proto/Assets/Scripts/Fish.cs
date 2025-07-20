@@ -42,12 +42,12 @@ public class Fish : Flyweight
 
         if (beingCaught)
         {
-            percentCaught += 0.002f;
+            percentCaught += 0.008f;
             slider.value = percentCaught;
         }
         else
         {
-            percentCaught -= 0.004f;
+            percentCaught -= 0.016f;
             if (percentCaught < 0)
             {
                 percentCaught = 0;

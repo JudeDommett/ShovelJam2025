@@ -278,7 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 0}
-  speed: 2
+  isCaught: 0
+  speed: 1.8
   slider: {fileID: 7298300396550052505}
 --- !u!1 &1952696627495448688
 GameObject:
@@ -605,7 +606,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 25}
-  m_SizeDelta: {x: 100, y: 20}
+  m_SizeDelta: {x: 73.5154, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7298300396550052505
 MonoBehaviour:
@@ -654,7 +655,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.825
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

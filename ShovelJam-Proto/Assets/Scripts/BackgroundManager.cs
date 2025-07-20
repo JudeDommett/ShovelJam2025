@@ -126,10 +126,19 @@ public class BackgroundManager : MonoBehaviour
 			info.fishSettings = null;
             return info;
 		}
-		if (skyIndex < skyOrder.Length-2)
+		if (skyIndex < skyOrder.Length-1)
 		{
 			skyIndex++;
 		}
+
+		//If at the end of the array we can't add 1
+		if(skyIndex == skyOrder.Length - 1)
+		{
+            info.backgroundAnim = GetSkyAnimatorOverride(skyIndex);
+            info.fishSettings = GetFishSettings(skyIndex);
+			return info;
+        }
+
 		info.backgroundAnim = GetSkyAnimatorOverride(skyIndex + 1);
 		info.fishSettings = GetFishSettings(skyIndex + 1);
 		return info;

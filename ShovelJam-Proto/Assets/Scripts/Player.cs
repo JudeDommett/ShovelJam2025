@@ -155,6 +155,7 @@ public class Player : MonoBehaviour
         caughtFish = fish.GetComponent<Fish>();
         fish.GetComponentInParent<Background>().fish = null;
         fish.SetParent(bobber.transform);
+        fish.transform.position = bobber.transform.position;
     }
 
     public void LoseFish()
