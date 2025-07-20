@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private bool isMoving = false;
+
     private GameObject bobber;
     private GameObject character;
     private Fish caughtFish;
+    private Animator animator;
 
     [SerializeField] private float bobberSpeed = 1f;
     [SerializeField] private float characterSpeed = 0.5f;
@@ -18,6 +21,7 @@ public class Player : MonoBehaviour
         bobber = GameObject.Find("Bobber");
         bobber.SetActive(false);
         character = GameObject.Find("Character");
+        animator = character.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,24 +62,39 @@ public class Player : MonoBehaviour
 
     private void CharacterMovement()
     {
+        isMoving = false;
+
         if (Input.GetKey("down"))
         {
             character.transform.position += Vector3.down * characterSpeed;
+            animator.Play("Character_Front");
+            isMoving = true;
         }
 
         if (Input.GetKey("up"))
         {
             character.transform.position += Vector3.up * characterSpeed;
+            animator.Play("Character_Right");
+            isMoving = true;
         }
 
         if (Input.GetKey("right"))
         {
             character.transform.position += Vector3.right * characterSpeed;
+            animator.Play("Character_Right");
+            isMoving = true;
         }
 
         if (Input.GetKey("left"))
         {
             character.transform.position += Vector3.left * characterSpeed;
+            animator.Play("Character_Left");
+            isMoving = true;
+        }
+
+        if(!isMoving)
+        {
+            animator.Play("Character_Front_Idle");
         }
     }
 
