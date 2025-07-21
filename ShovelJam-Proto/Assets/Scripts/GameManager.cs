@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         menu = GameObject.FindGameObjectWithTag("Menu");
+        menu.SetActive(true);
 
         gameState = GameState.Menu;
 
