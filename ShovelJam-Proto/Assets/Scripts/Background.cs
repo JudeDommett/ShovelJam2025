@@ -65,7 +65,7 @@ public class Background : Flyweight
         }
         else
         {
-            int fishseed = random.Next(0, backgroundInfo.fishSettings.FishTypes[0].fishType.Count - 1);
+            int fishseed = random.Next(0, backgroundInfo.fishSettings.FishTypes[0].fishType.Count);
             
             fish = (Fish)FlyweightFactory.Spawn(backgroundInfo.fishSettings);
             fish.transform.SetParent(transform);
@@ -87,7 +87,7 @@ public class Background : Flyweight
     public void SpawnCloud()
     {
         System.Random random = new System.Random();
-        int cloudPos = random.Next(-1, 1);
+        int cloudPos = random.Next(-1, 2);
 
         if (backgroundInfo.cloudSettings != null)
         {

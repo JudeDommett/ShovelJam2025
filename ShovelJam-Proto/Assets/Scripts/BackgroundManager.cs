@@ -94,7 +94,7 @@ public class BackgroundManager : MonoBehaviour
 		MoveBackground(fallingMoveStep);
 		if(skyIndex == 1)
 		{
-            seaBackground.position += Vector3.up * fallingMoveStep;
+            seaBackground.position += Vector3.up * fallingMoveStep * 16;
 			if(seaBackground.position.y >= 0)
 			{
 				seaBackground.position = Vector3.zero;

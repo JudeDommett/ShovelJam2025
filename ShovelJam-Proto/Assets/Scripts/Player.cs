@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private bool isMoving = false;
+
+    private GameObject fishCaughtUI;
+    private GameObject fishLostUI;
 
     private GameObject bobber;
     private GameObject character;
@@ -15,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private BackgroundManager backgroundManager;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +27,12 @@ public class Player : MonoBehaviour
         bobber.SetActive(false);
         character = GameObject.Find("Character");
         animator = character.GetComponent<Animator>();
+
+        fishCaughtUI = GameObject.Find("FishCaught");
+        fishCaughtUI.SetActive(false);
+
+        fishLostUI = GameObject.Find("FishLost");
+        fishLostUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,6 +44,7 @@ public class Player : MonoBehaviour
                 bobber.SetActive(false);
                 bobber.GetComponent<BoxCollider2D>().enabled = false;
                 DespawnFish();
+                PopUpUI();
                 CharacterMovement();
                 break;
 
@@ -58,6 +70,25 @@ public class Player : MonoBehaviour
                 break;
 
         }
+    }
+
+    private void PopUpUI()
+    {
+        if (caughtFish)
+        {
+            fishCaughtUI.SetActive(true);
+        }
+        else
+        {
+            //fishLostUI.SetActive(true);
+        }
+        Invoke("CloseUI", 1.0f);
+    }
+
+    void CloseUI()
+    {
+        fishCaughtUI.SetActive(false);
+        fishLostUI.SetActive(false);
     }
 
     private void CharacterMovement()
