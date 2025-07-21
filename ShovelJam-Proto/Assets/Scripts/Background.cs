@@ -65,12 +65,12 @@ public class Background : Flyweight
         }
         else
         {
-            int fishseed = random.Next(0, backgroundInfo.fishSettings.FishTypes.Count - 1);
+            int fishseed = random.Next(0, backgroundInfo.fishSettings.FishTypes[0].fishType.Count - 1);
             
             fish = (Fish)FlyweightFactory.Spawn(backgroundInfo.fishSettings);
             fish.transform.SetParent(transform);
             fish.transform.position = transform.position + new Vector3(0, 80);
-            fish.SetFishAnim(backgroundInfo.fishSettings.FishTypes[fishseed].fishAnim[fishseed]);
+            fish.SetFishAnim(backgroundInfo.fishSettings.FishTypes[0].fishAnim[fishseed]);
         }
     }
 

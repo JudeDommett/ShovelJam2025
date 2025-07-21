@@ -144,9 +144,19 @@ public enum FishType {
     Sardine,
     Soap,
     Cat,
+    GreenRemora,
+    Tuna,
     Clown,
+    Gummy,
     Peeper,
-    BoxJellyFish,
-    Glorp
+    Remora,
+    BottleJellyfish,
+    BoxJellyfish,
+    Ghost,
+    IrishSardine,
+    BarrelEye,
+    Glorp,
+    PurpleSoap,
+    Unidentified
 }
  

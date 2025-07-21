@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a4a474c5c2bba46902a6a5c45b7b45, type: 3}
   m_Name: Sky2
   m_EditorClassIdentifier: 
-  fishType: 03000000
+  fishType: 030000000400000005000000
   fishAnim:
   - {fileID: 22100000, guid: 74decc63cc7db6a4f9e7fcdc2752d9c4, type: 2}
+  - {fileID: 22100000, guid: 086852de7c8b6ff4e99cd3662c588e05, type: 2}
+  - {fileID: 22100000, guid: edfd410ef558b7346a35c0a8bad36fe7, type: 2}

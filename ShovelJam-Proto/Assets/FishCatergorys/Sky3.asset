@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35a4a474c5c2bba46902a6a5c45b7b45, type: 3}
-  m_Name: Sky5
+  m_Name: Sky3
   m_EditorClassIdentifier: 
-  fishType: 0e0000000f0000001000000011000000
+  fishType: 06000000070000000800000009000000
   fishAnim:
-  - {fileID: 22100000, guid: 4786c146f37e3bb43ad56ff799d39d29, type: 2}
-  - {fileID: 22100000, guid: 138018690a51cfb45a9222324838a854, type: 2}
-  - {fileID: 22100000, guid: a627d80c3dba1344a9438e1d2f0541fb, type: 2}
-  - {fileID: 22100000, guid: 62ea1f3157ea37b4386d180bf59b6769, type: 2}
+  - {fileID: 22100000, guid: 390e1746b613bb444b68747408b8716c, type: 2}
+  - {fileID: 22100000, guid: 4133457f483b76f44a8a8ac743a2b5e1, type: 2}
+  - {fileID: 22100000, guid: b411cbdaab8f77b40beb303c01e54e07, type: 2}
+  - {fileID: 22100000, guid: 160acafb7a9b7e2428dee93175db835d, type: 2}
