@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   prefab: {fileID: 1827054458848843585, guid: 2267d185f35531a4f83e1c4c46b21002, type: 3}
-  skyType: 1
+  skyType: 6
   FishTypes:
   - {fileID: 11400000, guid: 23b02e59827ba304e8e49229369dbeca, type: 2}

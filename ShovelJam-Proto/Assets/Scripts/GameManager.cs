@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
         menu = GameObject.FindGameObjectWithTag("Menu");
         menu.SetActive(true);
 

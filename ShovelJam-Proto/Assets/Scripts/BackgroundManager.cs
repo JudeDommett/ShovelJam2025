@@ -14,10 +14,14 @@ public class BackgroundManager : MonoBehaviour
 	private float risingMoveStep;
 	private Transform seaBackground;
 
-	// TODO: use scriptable object to hold the sky animator and order information
+	// TODO: use scriptable object to hold the sky animator and order information (PLEASE THIS ARRAY SUCKS)
 	[SerializeField] private AnimatorOverrideController[] animatorOverrides;
 
-	private SkyType[] skyOrder = { SkyType.blueSky, SkyType.blueSky, SkyType.blueSky, SkyType.blueSky, SkyType.blueSky,  SkyType.RainSky, SkyType.RainSky, SkyType.SpaceTransition, SkyType.SpaceSky, SkyType.SpaceSky};
+	private SkyType[] skyOrder = { SkyType.BlueSky, SkyType.BlueSky, SkyType.BlueSky, SkyType.BlueSky, SkyType.BlueSky, 
+									SkyType.WindTransition, SkyType.WindSky, SkyType.WindSky, 
+									SkyType.SunTransition, SkyType.SunSky, SkyType.SunSky, 
+									SkyType.RainTransition, SkyType.RainSky, SkyType.RainSky, 
+									SkyType.SpaceTransition, SkyType.SpaceSky, SkyType.SpaceSky};
 	private int skyIndex = 1;
 
 	[SerializeField] private BackgroundSettings backgroundSettings;
@@ -197,7 +201,12 @@ public struct BackgroundInfo
 
 
 public enum SkyType {
-	blueSky,
+	BlueSky,
+	WindTransition,
+	WindSky,
+	SunTransition,
+	SunSky,
+	RainTransition,
 	RainSky,
 	SpaceTransition,
 	SpaceSky

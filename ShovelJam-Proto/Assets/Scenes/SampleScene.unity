@@ -2967,6 +2967,11 @@ MonoBehaviour:
   fallingMoveStep: 3.5
   animatorOverrides:
   - {fileID: 22100000, guid: 071e5934454efca4ea00fefffd820ee2, type: 2}
+  - {fileID: 22100000, guid: 58ce70fef337f084b9475ec682baa1c6, type: 2}
+  - {fileID: 22100000, guid: 7fd4a3f795e94d649bd9aa38ef138c1b, type: 2}
+  - {fileID: 22100000, guid: 4c1bbe5b762922549b444d8ebc0b58ac, type: 2}
+  - {fileID: 22100000, guid: f59e8c9d27826394e901e4d406bc5045, type: 2}
+  - {fileID: 22100000, guid: 492e887b068319145a24e676cddda9de, type: 2}
   - {fileID: 22100000, guid: d1ff5f32684ab954b871996fcc717040, type: 2}
   - {fileID: 22100000, guid: 59a107fa679100f4d8e2966526ad19e4, type: 2}
   - {fileID: 22100000, guid: 2ec48fb0de4903d4c80df8453cad3bea, type: 2}
