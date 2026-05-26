@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     private Fish caughtFish;
     private Animator animator;
 
-    [SerializeField] private float bobberSpeed = 1f;
+    [SerializeField] private float bobberXSpeed = 3f;
+    [SerializeField] private float bobberYSpeed = 1f;
     [SerializeField] private float characterSpeed = 0.5f;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private BackgroundManager backgroundManager;
@@ -138,38 +139,38 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey("down"))
         {
-            backgroundManager.MoveBackground(bobberSpeed * 1.5f);
+            backgroundManager.MoveBackground(bobberYSpeed * 1.5f);
         }
         
         if (Input.GetKey("up"))
         {
-            backgroundManager.MoveBackground(bobberSpeed * -1.5f);
+            backgroundManager.MoveBackground(bobberYSpeed * -1.5f);
         }
 
         if (Input.GetKey("right"))
         {
-            bobber.transform.position += Vector3.right * bobberSpeed;
+            bobber.transform.position += Vector3.right * bobberXSpeed;
         }
 
         if (Input.GetKey("left"))
         {
-            bobber.transform.position += Vector3.left * bobberSpeed;
+            bobber.transform.position += Vector3.left * bobberXSpeed;
         }
     }
 
     private void FallMovement()
     {
         // play is always moving down
-        backgroundManager.MoveBackground(bobberSpeed * 2f);
+        //backgroundManager.MoveBackground(bobberSpeed * 2f);
 
         if (Input.GetKey("right"))
         {
-            bobber.transform.position += Vector3.right * bobberSpeed;
+            bobber.transform.position += Vector3.right * bobberXSpeed;
         }
 
         if (Input.GetKey("left"))
         {
-            bobber.transform.position += Vector3.left * bobberSpeed;
+            bobber.transform.position += Vector3.left * bobberXSpeed;
         }
     }
 

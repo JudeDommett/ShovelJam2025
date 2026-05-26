@@ -865,7 +865,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4c33ddcf312254eb450547ecb14164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobberSpeed: 3
+  bobberXSpeed: 3
+  bobberYSpeed: 2
   characterSpeed: 0.5
   gameManager: {fileID: 1598057302}
   backgroundManager: {fileID: 2100360603}
@@ -3472,7 +3473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   risingTime: 1
   rising_NumberOfScreens: 5
-  fallingMoveStep: 0.5
+  fallingMoveStep: 1.5
   animatorOverrides:
   - {fileID: 22100000, guid: 071e5934454efca4ea00fefffd820ee2, type: 2}
   - {fileID: 22100000, guid: 58ce70fef337f084b9475ec682baa1c6, type: 2}

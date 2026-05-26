@@ -10,7 +10,8 @@ public class Fish : Flyweight
     private float percentCaught = 0;
 
     // Controls How Fish moves
-    [SerializeField] private float speed = 0.01f;
+    [SerializeField] private float speed = 20f;
+    [SerializeField] private float maxSpeed = 20f;
     private int moveDir = 0;
     private int framesToMove = 0;
     private int framesMoved = 0;
@@ -21,6 +22,7 @@ public class Fish : Flyweight
     private Camera cam;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rigidbody;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -29,6 +31,7 @@ public class Fish : Flyweight
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -36,10 +39,46 @@ public class Fish : Flyweight
     {
         if (isCaught)
         {
+            rigidbody.velocity = Vector2.zero;
             return;
         }
-        DoMovement();
 
+        DoMovement();
+        UpdateCaughtAmount();
+        CheckCaughtAmount();
+    }
+
+    private void DoMovement()
+    {
+        System.Random random = new System.Random();
+
+        //if completed previous movement generate new direction and move time
+        if(framesMoved == framesToMove){
+            moveDir = random.Next(2);
+            framesToMove = random.Next(45, 90);
+            framesMoved = 0;
+        }
+
+        // override move dir if gone too far
+        if(transform.position.x > 100)
+            moveDir = 1;
+        if(transform.position.x < -100)
+            moveDir = 0;
+
+        if(moveDir%2 == 0){
+            rigidbody.AddForce(Vector3.right * speed);
+        }
+        else{
+            rigidbody.AddForce(Vector3.left * speed);
+        }
+
+        spriteRenderer.flipX = Mathf.Sign(rigidbody.velocity.x) == -1;
+        
+        framesMoved++;
+    }
+
+    void UpdateCaughtAmount()
+    {
         if (beingCaught)
         {
             percentCaught += 0.008f;
@@ -57,7 +96,11 @@ public class Fish : Flyweight
 
             slider.value = percentCaught;
         }
-        if(percentCaught >= 1)
+    }
+
+    void CheckCaughtAmount()
+    {
+        if (percentCaught >= 1)
         {
             // update gamestate
             gameManager.UpdateGameState(GameState.Falling);
@@ -69,51 +112,6 @@ public class Fish : Flyweight
             slider.gameObject.SetActive(false);
 
         }
-    }
-
-    private void DoMovement()
-    {
-        System.Random random = new System.Random();
-
-        //if completed previous movement generate new direction and move time
-        if(framesMoved == framesToMove)
-        {
-            moveDir = random.Next(2);
-            framesToMove = random.Next(45, 90);
-            framesMoved = 0;
-        }
-
-        // override move dir if gone too far
-        if(transform.position.x > 100)
-        {
-            moveDir = 1;
-        }
-        if(transform.position.x < -100)
-        {
-            moveDir = 0;
-        }
-
-        if(moveDir%2 == 0)
-        {
-            transform.position += Vector3.right * speed;
-
-            // rotate sprite to match direction of movement
-            spriteRenderer.flipX = false;
-
-        }
-        else
-        {
-            transform.position += Vector3.left * speed;
-
-            // rotate sprite to match direction of movement
-            spriteRenderer.flipX = true;
-
-        }
-
-        // update slider positon
-        //slider.transform.position = cam.WorldToScreenPoint(transform.position) + new Vector3(0,100);
-        
-        framesMoved++;
     }
 
     public void SetFishAnim(AnimatorOverrideController newBackground)

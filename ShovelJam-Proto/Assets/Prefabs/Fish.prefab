@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 1116488132286649371}
   - component: {fileID: 1221784056670815908}
   - component: {fileID: 244673712956566726}
+  - component: {fileID: 8295086128129641852}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -279,8 +280,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 0}
   isCaught: 0
-  speed: 1.8
+  speed: 100
+  maxSpeed: 20
   slider: {fileID: 7298300396550052505}
+--- !u!50 &8295086128129641852
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827054458848843585}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1952696627495448688
 GameObject:
   m_ObjectHideFlags: 0
