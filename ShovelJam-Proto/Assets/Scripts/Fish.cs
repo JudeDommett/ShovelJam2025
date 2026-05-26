@@ -39,7 +39,7 @@ public class Fish : Flyweight
     {
         if (isCaught)
         {
-            rigidbody.velocity = Vector2.zero;
+            rigidbody.linearVelocity = Vector2.zero;
             return;
         }
 
@@ -71,8 +71,8 @@ public class Fish : Flyweight
         else{
             rigidbody.AddForce(Vector3.left * speed);
         }
-
-        spriteRenderer.flipX = Mathf.Sign(rigidbody.velocity.x) == -1;
+        
+        spriteRenderer.flipX = Mathf.Sign(rigidbody.linearVelocity.x) == -1;
         
         framesMoved++;
     }
